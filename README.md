@@ -1,6 +1,21 @@
 # Coveo Backend Coding Challenge
 (inspired by https://github.com/busbud/coding-challenge-backend-c)
 
+## Usage 
+The code is deployed at https://city-query.appspot.com , with the
+API exposed at `/suggestions` as required. An example query is https://city-query.appspot.com/suggestions?q=lond
+
+To run tests, in the main project directory, run 
+```
+python -m unittest discover test
+```
+
+The author has also taken the liberty of adding an additional parameter `n` to
+specify the number of results to be returned; the top `n` results are returned,
+or if `n` is negative, all results with scores above a certain threshold are returned. If `n` is not an integer, the top 10 results are returned. 
+
+Currently, the cities data set only includes large cities in North America - the data set provided with the challenge. 
+
 ## Requirements
 
 Design a REST API endpoint that provides auto-complete suggestions for large cities.
