@@ -21,10 +21,12 @@ class AutoComplete(object):
     more confident. 
     
     Methods:
+        get_suggestions_json -- returns auto-complete suggestions for query in 
+                                JSON format.
         get_query_results -- gets auto-complete suggestions for a query, taking into
                              account query string, location (if provided), and
                              other factors. 
-        json_repr -- returns a JSON representation of auto-complete suggestions.
+        json_repr -- returns a JSON representation of given auto-complete suggestions.
         proximity_points -- given 2 coordinates, returns a value in [0, 1] where 
                             the larger the value, the closer the coordinates.
                                 

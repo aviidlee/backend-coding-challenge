@@ -4,7 +4,8 @@ from tools.utils import strip_punctuation_spaces
 class City(object):
     '''A city and pre-computed attributes to aid in queries. 
         
-    In addition to provided arguments, City also stores the capitalised
+    In addition to provided arguments, City also stores the capitalised, 
+    pucntuation- and whitespace-stripped 
     versions of its name and alternative names and their associated phonetic
     representations as computed by the double metaphone algorithm. 
     NB: Treat class as immutable.

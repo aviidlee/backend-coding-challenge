@@ -1,14 +1,12 @@
-'''
-Created on Aug. 3, 2019
-
-@author: alex
-'''
 from tools.scoringmethods.scoringmethod import ScoringMethod
 from tools.patternmatching import simpleprefixmatch
 from tools.utils import sigmoid
 
 class PrefixPriority(ScoringMethod):
-    '''
+    '''Scoring method giving higher points for beginning of pattern and text matching.
+
+    See score() method for more details. 
+
     Attributes: 
         baseShift -- the number to subtract from the base score so that poor 
                      matches score in the negatives; this is necessary b.c.
@@ -42,22 +40,18 @@ class PrefixPriority(ScoringMethod):
         Arguments:
             query -- the query string, e.g. 'lond'
             matchString -- UTF-8 string on which the query matched; e.g. 'london'. 
-            match -- the location and length of the match between query and matchString,
-                     as defined in the get_matches method. 
-                     e.g. if query = 'lon' and matchString = 'london', 
-                          match = [(0, 3)].
-            
-            
+                    
         Returns: 
-            A raw floating point score, where a higher score represents a better match.
-            
+            A score in range [0, 1] where 0 indicates no match at all (as determined by
+            get_matches method in simpleprefixmatch.py), and 1 indicates 
+            a character-for-character exact match between query and matchString. 
+
         Preconditions: 
             -- All alphabetical characters in query and matchString are in the 
                same case (all upper or all lower). 
-            -- match is non-null, and the tuples therein are strictly
-               ascending in the first element.
         '''
-
+        
+        # Get location and number of character matches 
         match = simpleprefixmatch.get_matches(query, matchString, 1)
         baseShift = self.baseShift
         substringBonus = self.subStringBonus

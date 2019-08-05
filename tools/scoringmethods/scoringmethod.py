@@ -2,7 +2,14 @@ from abc import abstractmethod
 
 class ScoringMethod(object):
     '''
-    classdocs
+    Abstract base class for a scoring method and its associated parameters. 
+    
+    Given two strings, return a number in range [0, 1] representing how closely
+    the strings match, where the higher the number, the closer the match. 
+
+    Methods:
+        score -- returns a score between 0 and 1 inclusive, indicating how closely  
+                 two strings match
     '''
 
 

@@ -1,12 +1,20 @@
-'''
-Created on Jul. 24, 2019
-
-@author: alex
-'''
+from tools.utils import strip_punctuation_spaces
 
 class MatchResult(object):
     '''
-    classdocs
+    Represents a result of a query - the city that matched and other data.
+
+    Attributes:
+        city -- the city that matched.
+        score -- the score of the match, in range [0, 1]. 
+        hsn -- highest scoring name; the name of the city (many cities have 
+               alternate names) which resuted in the highest scoring match.
+               Should be the unprocessed version, with punctuation and spaces
+               intact. 
+
+    Methods:
+        dict_repr -- Returns a dictionary representation of this. 
+
     '''
 
 
@@ -16,7 +24,7 @@ class MatchResult(object):
         '''
         self.city = city 
         self.score = score 
-        # Mainly for debug purposes. Highest scoring name. 
+        # Highest scoring name. 
         self.hsn = hsn 
         
     def __repr__(self, *args, **kwargs):
@@ -28,7 +36,9 @@ class MatchResult(object):
     def dict_repr(self):
         '''Returns a dictionary representation of the match result (for JSON).
         '''
-        if(self.city.name != self.hsn.upper()):
+        # If highest-scoring name is not the best-known name of city, add it.
+        # Otherwise the search result may be very confusing to user.
+        if(self.city.origName != self.hsn):
             name = self.city.origName + " (a.k.a: " + self.hsn + ")"
         else:
             name = self.city.origName 

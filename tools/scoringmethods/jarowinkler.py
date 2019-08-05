@@ -8,6 +8,10 @@ class JaroWinkler(ScoringMethod):
     Attributes: 
         winkler -- whether or not to use Winkler's modification to Jaro's 
                    algorithm, which weights prefix matches more highly.
+        winkler_adj -- same as winkler... author of pyjarowinkler seems to have 
+                       duplicate arguments. 
+        scaling -- scale factor for Winkler adjustment. 
+
     '''
 
 
