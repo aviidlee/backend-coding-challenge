@@ -54,6 +54,7 @@ class AutoComplete(object):
             -- params should contain all necessary parameters to call 
                get_query_results; this method does NOT do error-checking
                for this.
+            -- numRes is an int
         '''
           
         query = Query(q, lat, longi)
